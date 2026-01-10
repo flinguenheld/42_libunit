@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/10 23:14:09 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/11 00:24:41 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
-# define EXIT_OK 0
-# define EXIT_KO 1
-# define SEG_FAULT 2
-# define BUS_ERROR 3
+# define EXIT_OK 10
+# define EXIT_KO 20
+// # define SEG_FAULT 300
+// # define BUS_ERROR 400
 
 typedef struct s_unode
 {
@@ -37,7 +37,7 @@ typedef struct s_unode
  * @brief
  * Add a new node in the list.
  */
-void load_test(t_list *list, char *name, int (*function)(void));
+void load_test(t_list **list, char *name, int (*function)(void));
 
 /**
  * @brief

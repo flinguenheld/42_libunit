@@ -6,7 +6,7 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:20:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/10 19:20:56 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 00:24:41 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,30 @@ int an_awesome_dummy_test_function(void)
 
 int another_awesome_dummy_test_function(void)
 {
-	if (10 * 2 == 0)
-		return (0);
-	else
+	// if (10 * 2 == 0)
+	// 	return (0);
+	// else
 		return (-1);
+}
+
+int segfault_test(void)
+{
+	char *a;
+	*a = 5;
+	return 1;
 }
 
 int main()
 {
-	t_list *list;
-	t_list *current_node;
-	t_unode *current_content;
+	t_list	*list;
 
-
-	// Add those two functions in the list
 	list = NULL;
-	ft_lst_push_back(&list, ft_lst_new(new_content("awsesome test", &an_awesome_dummy_test_function)));
-	ft_lst_push_back(&list, ft_lst_new(new_content("another awsesome test", &another_awesome_dummy_test_function)));
 
-	// Lauch tests
-	while (list != NULL)
-	{
+	load_test(&list, "Awsome dummy function", &an_awesome_dummy_test_function);
+	load_test(&list, "another dummy function", &an_awesome_dummy_test_function);
+	load_test(&list, "segfault that!", &segfault_test);
 
-		current_node = ft_lst_pop_front(&list);
-		current_content = (t_unode *)current_node->content;
+	ft_printf("list len: %d\n", ft_lst_size(list));
 
-		ft_printf("%s\n", current_content->name);
-		if (current_content->function() == 0)
-		{
-			ft_printf("That's a success\n");
-		}
-		else
-		{
-			ft_printf("That's a fail\n");
-		}
-
-		ft_lst_clear_basic(&current_node);
-	}
+	launch_tests("THEO TESTS", list);
 }

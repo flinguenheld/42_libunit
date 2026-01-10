@@ -6,17 +6,20 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 00:01:14 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/11 00:24:41 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include "libft/libft.h"
+#include <signal.h>
 #include <stdlib.h>
 
-int	print_result(char *title, t_unode test)
+int	print_result(char *title, t_unode *test)
 {
-	pid_t f;
-	int status;
+	pid_t	f;
+	pid_t	id_wait;
+	int		status;
 
 	f = fork();
 	if (f < 0)
@@ -27,20 +30,31 @@ int	print_result(char *title, t_unode test)
 	else if (!f)
 	{
 		// Child
-		if (!test->function())
+		if (test->function() == 0)
 			exit(EXIT_OK);
 		exit(EXIT_KO);
 	}
 	// Parent
-	wait(&status);
+	id_wait = wait(&status);
+	if (id_wait < 0)
+		ft_printf("error >>>.!!!!!!!!!!!!!\n");
+	ft_printf("value of status before >> %d\n", status);
+	// status >>= 8;
+	status &= 0xFF;
+	// status >>= 8;
+	ft_printf("value of status after >> %d\n", status);
 	if (status == EXIT_OK)
 		return (ft_printf("%s:\t%s:\t[OK]\n", title, test->name), 1);
 	else if (status == EXIT_KO)
 		ft_printf("%s:\t%s:\t[KO]\n", title, test->name);
-	else if (status == SEG_FAULT)
+	// else if (status == SIGSEGV)
+	else if (status == 256)
 		ft_printf("%s:\t%s:\t[SEGV]\n", title, test->name);
-	else if (status == BUS_ERROR)
+	// else if (status == BUS_ERROR)
+	else if (status == 253)
 		ft_printf("%s:\t%s:\t[BUSERR]\n", title, test->name);
+	else
+		ft_printf("hello %d\n", status);
 	return (0);
 }
 
@@ -66,9 +80,9 @@ int	launch_tests(char *title, t_list *list)
 	return (0);
 }
 
-void load_test(t_list *list, char *name, int (*function)(void))
+void load_test(t_list **list, char *name, int (*function)(void))
 {
-	ft_lst_push_back(&list, ft_lst_new(new_content(name, function)));
+	ft_lst_push_back(list, ft_lst_new(new_content(name, function)));
 }
 
 t_unode *new_content(char *name, int (*function)(void))
