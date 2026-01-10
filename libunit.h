@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
+/*                                                        :::      ::::::::   */
 /*   libunit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
+/*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/10 21:07:14 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:14:09 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include <sys/wait.h>
+
+# define EXIT_OK 0
+# define EXIT_KO 1
+# define SEG_FAULT 2
+# define BUS_ERROR 3
 
 typedef struct s_unode
 {
