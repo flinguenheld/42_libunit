@@ -11,55 +11,53 @@
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include <signal.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <sys/wait.h>
+#include "libunit.h"
+
+int an_awesome_dummy_test_function(void)
+{
+	if (ft_strlen("abcd") == 4)
+		return (0);
+	else
+		return (-1);
+}
+
+int another_awesome_dummy_test_function(void)
+{
+	if (10 * 2 == 0)
+		return (0);
+	else
+		return (-1);
+}
 
 int main()
 {
-	ft_printf("hello");
+	t_list *list;
+	t_list *current_node;
+	t_unode *current_content;
 
-	ft_printf("pid of fork with getpid: %d\n", getpid());
-	pid_t pid = fork();
 
-	ft_printf("value : %b\n", -1);
+	// Add those two functions in the list
+	list = NULL;
+	ft_lst_push_back(&list, ft_lst_new(new_content("awsesome test", &an_awesome_dummy_test_function)));
+	ft_lst_push_back(&list, ft_lst_new(new_content("another awsesome test", &another_awesome_dummy_test_function)));
 
-	if (pid == 0)
+	// Lauch tests
+	while (list != NULL)
 	{
-		ft_printf("Only printed by the child %d\n", getpid());
-		sleep(2);
 
-		// FORCE SEGFAULT
-		int *a;
-		ft_printf("aaa%c\n", *a);
+		current_node = ft_lst_pop_front(&list);
+		current_content = (t_unode *)current_node->content;
 
-		
-		// exit(EXIT_SUCCESS);
-		// exit(SIGEV_SIGNAL);
-		// exit(BUS_ADRERR);
-		// exit(EXIT_FAILURE);
-		exit(SIGCHLD);
-		// exit(5);
+		ft_printf("%s\n", current_content->name);
+		if (current_content->function() == 0)
+		{
+			ft_printf("That's a success\n");
+		}
+		else
+		{
+			ft_printf("That's a fail\n");
+		}
+
+		ft_lst_clear_basic(&current_node);
 	}
-	else
-	{
-		// int *value_child = malloc(sizeof(int));
-		// *value_child = 10;
-		int value_child;
-		pid_t id = wait(&value_child);
-
-		// value_child = value_child & 0xFF;
-		value_child = value_child >> 8;
-
-		ft_printf("value from child after wait: %d -> %d\n",id, value_child);
-		// printf("value from child after wait: %d -> %b\n",id, *value_child & 0xFF);
-
-		if (value_child == 5)
-			ft_printf("ok that's the same signal\n");
-		
-	}
-	
-	ft_printf("pid of fork with getpid: %d - %d\n",pid, getpid());
 }
