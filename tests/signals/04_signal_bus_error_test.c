@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   real.h                                             :+:      :+:    :+:   */
+/*   04_signal_bus_error_test.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:06 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REAL_H
-# define REAL_H
+#include "signals.h"
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-# include "../../framework/libunit.h"
+// https://en.wikipedia.org/wiki/Bus_error
+int	signal_bus_error_test(void)
+{
+	int		*iptr;
+	char	*cptr;
 
-int	real_launcher(void);
-int	real_ok_test(void);
-int	real_ko_test(void);
-int	real_segmentation_fault_test(void);
-int	bus_error_test(void);
-
-#endif
+	__asm__("pushf\norl $0x40000,(%rsp)\npopf");
+	cptr = malloc(sizeof(int) + 1);
+	iptr = (int *)++cptr;
+	*iptr = 42;
+	return (0);
+}

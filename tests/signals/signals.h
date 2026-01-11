@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   02_real_ko_test.c                                  :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:06 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "real.h"
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-int	real_ko_test(void)
-{
-	int	a;
-	int	b;
+# include "../../framework/libunit.h"
 
-	a = 100;
-	b = 100;
-	if (a + b == 0)
-		return (0);
-	else
-		return (-1);
-}
+int	signal_launcher(void);
+int	signal_ok_test(void);
+int	signal_ko_test(void);
+int	signal_segmentation_fault_test(void);
+int	signal_bus_error_test(void);
+
+#endif

@@ -6,17 +6,17 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:06 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "real/real.h"
+#include "signals/signals.h"
 
 int	main(void)
 {
 	int	counter;
 
 	counter = 0;
-	counter += real_launcher();
+	counter += signal_launcher();
 	return (0);
 }

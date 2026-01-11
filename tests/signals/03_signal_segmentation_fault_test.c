@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   03_segmentation_fault_test.c                       :+:      :+:    :+:   */
+/*   03_signal_segmentation_fault_test.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:06 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "real.h"
-#include <unistd.h>
+#include "signals.h"
 
-int	real_segmentation_fault_test(void)
+int	signal_segmentation_fault_test(void)
 {
 	int	*a;
 

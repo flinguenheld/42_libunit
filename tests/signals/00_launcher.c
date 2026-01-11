@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_real_ok_test.c                                  :+:      :+:    :+:   */
+/*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 19:41:06 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 21:43:54 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "real.h"
+#include "signals.h"
 
-int	real_ok_test(void)
+int	signal_launcher(void)
 {
-	int	a;
-	int	b;
+	t_list	*list;
 
-	a = 100;
-	b = 100;
-	if (a + b == 200)
-		return (0);
-	else
-		return (-1);
+	list = NULL;
+	load_test(&list, "signal ok", &signal_ok_test);
+	load_test(&list, "signal ko", &signal_ko_test);
+	load_test(&list, "signal seg fault", &signal_segmentation_fault_test);
+	load_test(&list, "signal bus error", &signal_bus_error_test);
+	return (launch_tests("SIGNAL", list));
 }
