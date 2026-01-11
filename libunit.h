@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 00:24:41 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 10:42:12 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 # define EXIT_OK 10
 # define EXIT_KO 20
-// # define SEG_FAULT 300
-// # define BUS_ERROR 400
 
 typedef struct s_unode
 {

@@ -6,16 +6,41 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 00:24:41 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/11 10:51:37 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 #include "libft/libft.h"
-#include <signal.h>
-#include <stdlib.h>
 
-int	print_result(char *title, t_unode *test)
+
+
+int	print_result(int status, char *title, t_unode *test)
+{
+	int		code;
+
+	if (WIFEXITED(status))
+	{
+		// Child terminated normally with exit() or return.
+		code = WEXITSTATUS(status);
+		if (code == EXIT_OK)
+			return (ft_printf("%s:\t%s:\t[OK]\n", title, test->name), 1);
+		else if (code == EXIT_KO)
+			return (ft_printf("%s:\t%s:\t[KO]\n", title, test->name), 0);
+	}
+	else if (WIFSIGNALED(status))
+	{
+		// Child terminated by a signal.
+		code = WTERMSIG(status);
+		if (code == SIGSEGV)
+			return (ft_printf("%s:\t%s:\t[SEGV]\n", title, test->name), 0);
+		else if (code == SIGBUS)
+			return (ft_printf("%s:\t%s:\t[BUSERR]\n", title, test->name), 0);
+	}
+	return (ft_printf("%s:\t%s:\t[unknown error].\n", title, test->name), 0);
+}
+
+int	fork_to_test(char *title, t_unode *test)
 {
 	pid_t	f;
 	pid_t	id_wait;
@@ -31,31 +56,12 @@ int	print_result(char *title, t_unode *test)
 	{
 		// Child
 		if (test->function() == 0)
-			exit(EXIT_OK);
+			exit(EXIT_OK); ///////////////////////////////////// try free before exit???
 		exit(EXIT_KO);
 	}
 	// Parent
 	id_wait = wait(&status);
-	if (id_wait < 0)
-		ft_printf("error >>>.!!!!!!!!!!!!!\n");
-	ft_printf("value of status before >> %d\n", status);
-	// status >>= 8;
-	status &= 0xFF;
-	// status >>= 8;
-	ft_printf("value of status after >> %d\n", status);
-	if (status == EXIT_OK)
-		return (ft_printf("%s:\t%s:\t[OK]\n", title, test->name), 1);
-	else if (status == EXIT_KO)
-		ft_printf("%s:\t%s:\t[KO]\n", title, test->name);
-	// else if (status == SIGSEGV)
-	else if (status == 256)
-		ft_printf("%s:\t%s:\t[SEGV]\n", title, test->name);
-	// else if (status == BUS_ERROR)
-	else if (status == 253)
-		ft_printf("%s:\t%s:\t[BUSERR]\n", title, test->name);
-	else
-		ft_printf("hello %d\n", status);
-	return (0);
+	return (print_result(status, title, test));
 }
 
 int	launch_tests(char *title, t_list *list)
@@ -72,7 +78,7 @@ int	launch_tests(char *title, t_list *list)
 	{
 		node = ft_lst_pop_front(&list);
 		content = (t_unode *)node->content;
-		counter += print_result(title, content);
+		counter += fork_to_test(title, content);
 		ft_lst_clear_basic(&node);
 		total++;
 	}
