@@ -23,34 +23,30 @@
 # define EXIT_OK 10
 # define EXIT_KO 20
 
+/**
+ * @brief
+ * Struct used to store data in lists
+ */
 typedef struct s_unode
 {
 	int		(*function)(void);
 	char	*name;
 }	t_unode;
 
-#endif
-
 /**
  * @brief
- * Add a new node in the list.
+ * Add a new test in the list.
  */
-void load_test(t_list **list, char *name, int (*function)(void));
+void	load_test(t_list **list, char *name, int (*function)(void));
 
 /**
  * @brief
  * Loop in the list an launch tests.
+ * Free the list once at the end of the function
  * @return
- * The number of succesful tests ?
+ * 0 if all tests are OK
+ * Otherwise 1
  */
-int	launch_tests(char *title, t_list *list);
+int		launch_tests(char *title, t_list *list);
 
-
-/**
- * @brief
- * Malloc a new content
- * @return
- * unode struct ptr or NULL if malloc error
- */
-t_unode *new_content(char *name, int (*function)(void));
-
+#endif
