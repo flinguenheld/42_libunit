@@ -1,16 +1,13 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = signal_test
+NAME = real_test
 LIBUNIT_FOLDER = ../framework/
 LIBUNIT_FILE = $(LIBUNIT_FOLDER)libunit.a
 
-SRC = main.c \
-		signals/00_launcher.c \
-		signals/01_signal_ok_test.c \
-		signals/02_signal_ko_test.c \
-		signals/03_signal_segmentation_fault_test.c \
-		signals/04_signal_bus_error_test.c
+SRC = tests/main.c \
+		tests/is_int/00_launcher.c \
+		tests/is_int/01_is_int.c \
 
 all: $(NAME)
 
