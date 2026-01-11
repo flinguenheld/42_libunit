@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memchr_test.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 00:47:47 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/12 00:47:48 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr/memchr_test.h"
+#ifndef MEMCHR_TEST_H
+# define MEMCHR_TEST_H
 
-int	main(void)
-{
-	int	counter;
+# include "../../../framework/libunit.h"
+# include "../../libft/libft.h"
 
-	counter = 0;
-	counter += memchr_launcher();
-	return (0);
-}
+int	memchr_launcher(void);
+int	memchr_can_find_d_in_abcdef_test(void);
+int	memchr_return_null_for_z_in_abcdef_test(void);
+int	memchr_return_null_for_letter_after_n(void);
+int	memchr_return_first_b_in_abababab(void);
+
+#endif
