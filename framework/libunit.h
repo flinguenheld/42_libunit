@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 02:46:08 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:34:54 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,10 @@ void	load_test(t_list **list, char *name, int (*function)(void));
  * 0 if all tests are OK
  * Otherwise 1
  */
-int		launch_tests(char *title, t_list *list);
-
+int		launch_tests(char *title, t_list *start_list, t_count *final_count);
 void	style_print(char *title, char *name, char *msg, char *color);
 void	print_checked(int counter, int total);
-void	print_final_counter(&s_count);
+void	print_final_counter(t_count *s_count);
 t_count	count_init(void);
 
 #endif

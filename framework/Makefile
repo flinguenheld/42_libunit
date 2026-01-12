@@ -7,7 +7,8 @@ LIBFT_FILE = $(LIBFT_FOLDER)libft.a
 TEST = main_test
 
 SRC =	libunit.c \
-		print.c\
+		print.c \
+		counter.c \
 
 all: $(NAME)
 

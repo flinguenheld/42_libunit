@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 03:17:06 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:38:37 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ void	print_checked(int counter, int total)
 	free(green_str);
 }
 
-void	print_final_counter(&s_count)
+void	print_final_counter(t_count *s_count)
 {
-	ft_printf("\t%s255;0%sT%s200;50%sO%s150;100%sT%s100;150%sA%s50;200%sL%s0;255%s:%s\n\t",
-		KSTA, KEND, KSTA, KEND, KSTA, KEND, KSTA,
-		KEND, KSTA, KEND, KSTA, KEND, KNRM);
+	ft_printf("%s255;0%sT%s200;50%sO%s150;100%sT",
+		KSTA, KEND, KSTA, KEND, KSTA, KEND);
+	ft_printf("%s100;150%sA%s50;200%sL%s0;255%s:%s",
+		KSTA, KEND, KSTA, KEND, KSTA, KEND, KNRM);
 	print_checked(s_count->success, s_count->total);
 }

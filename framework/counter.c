@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 02:35:24 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 02:45:53 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:35:40 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_count	count_init(void)
 {
-	return((t_count){.total = 0, .success = 0});
+	return ((t_count){.total = 0, .success = 0});
 }
