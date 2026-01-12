@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   memchr_test.h                                      :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Created: 2025/12/15 22:27:30 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/06 18:22:26 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMCHR_TEST_H
-# define MEMCHR_TEST_H
+#include "ft_printf.h"
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+int	print_char(char value, t_flags flags)
+{
+	int		total;
 
-int	memchr_launcher(t_count *final_count);
-int	memchr_can_find_d_in_abcdef_test(void);
-int	memchr_return_null_for_z_in_abcdef_test(void);
-int	memchr_return_null_for_letter_after_n(void);
-int	memchr_return_first_b_in_abababab(void);
-
-#endif
+	total = 0;
+	flags.width.val--;
+	while (!flags.width.after && flags.width.val-- > 0)
+		total += putchar_count(' ', flags);
+	total += putchar_count(value, flags);
+	while (flags.width.after && flags.width.val-- > 0)
+		total += putchar_count(' ', flags);
+	return (total);
+}

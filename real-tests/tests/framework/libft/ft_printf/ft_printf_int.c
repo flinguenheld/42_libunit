@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   memchr_test.h                                      :+:      :+:    :+:   */
+/*   ft_printf_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Created: 2025/12/15 19:06:51 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:55 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMCHR_TEST_H
-# define MEMCHR_TEST_H
+#include "ft_printf.h"
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+int	print_int(int value, t_flags flags)
+{
+	char	*unsigned_value_str;
 
-int	memchr_launcher(t_count *final_count);
-int	memchr_can_find_d_in_abcdef_test(void);
-int	memchr_return_null_for_z_in_abcdef_test(void);
-int	memchr_return_null_for_letter_after_n(void);
-int	memchr_return_first_b_in_abababab(void);
-
-#endif
+	if (value < 0)
+		unsigned_value_str = ft_ultobase(-(long)value, "0123456789");
+	else
+		unsigned_value_str = ft_ultobase(value, "0123456789");
+	flags.hexa = "";
+	flags = up_flags_number(value < 0, unsigned_value_str, flags);
+	return (print_number((value < 0), unsigned_value_str, flags));
+}

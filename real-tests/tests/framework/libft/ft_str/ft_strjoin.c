@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   memchr_test.h                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/08 21:23:22 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:56 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMCHR_TEST_H
-# define MEMCHR_TEST_H
+#include "../libft.h"
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*new_str;
+	size_t	buffer_size;
 
-int	memchr_launcher(t_count *final_count);
-int	memchr_can_find_d_in_abcdef_test(void);
-int	memchr_return_null_for_z_in_abcdef_test(void);
-int	memchr_return_null_for_letter_after_n(void);
-int	memchr_return_first_b_in_abababab(void);
-
-#endif
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	buffer_size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	new_str = ft_calloc(buffer_size, sizeof(char));
+	if (new_str != NULL)
+	{
+		ft_strlcpy(new_str, s1, buffer_size);
+		ft_strlcat(new_str, s2, buffer_size);
+	}
+	return (new_str);
+}

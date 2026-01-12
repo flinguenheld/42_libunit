@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   memchr_test.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/11 20:48:42 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:55 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMCHR_TEST_H
-# define MEMCHR_TEST_H
+#include "../libft.h"
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+static void	run(unsigned int n, int fd)
+{
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd('0' + n % 10, fd);
+}
 
-int	memchr_launcher(t_count *final_count);
-int	memchr_can_find_d_in_abcdef_test(void);
-int	memchr_return_null_for_z_in_abcdef_test(void);
-int	memchr_return_null_for_letter_after_n(void);
-int	memchr_return_first_b_in_abababab(void);
-
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		run((unsigned int)-n, fd);
+	}
+	else
+		run((unsigned int)n, fd);
+}

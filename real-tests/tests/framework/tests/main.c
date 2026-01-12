@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_int.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/12 03:46:06 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_INT_H
-# define IS_INT_H
+#include "signals/signals.h"
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+int	main(void)
+{
+	t_count	s_count;
 
-int	is_int_launcher(t_count *final_count);
-int	is_int_basic_int_test(void);
-int	is_int_basic_non_int_test(void);
-int	is_int_null_test(void);
-int	is_int_signs_test(void);
-int	is_int_space_test(void);
-int	is_int_no_char_test(void);
-
-#endif
+	s_count = count_init();
+	signal_launcher(&s_count);
+	print_final_counter(&s_count);
+	if (s_count.success != s_count.total)
+		return (-1);
+	return (0);
+}

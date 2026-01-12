@@ -13,8 +13,8 @@
 #ifndef ATOL_H
 # define ATOL_H
 
-# include "../../../framework/libunit.h"
-# include "../../libft/libft.h"
+# include "../framework/libunit.h"
+# include "../../libft.h"
 # include <limits.h>
 
 int	atol_launcher(t_count *final_count);

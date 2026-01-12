@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   memchr_test.h                                      :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:12:41 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:12:40 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMCHR_TEST_H
-# define MEMCHR_TEST_H
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-# include "../framework/libunit.h"
-# include "../../libft.h"
+# include "../../framework/libunit.h"
 
-int	memchr_launcher(t_count *final_count);
-int	memchr_can_find_d_in_abcdef_test(void);
-int	memchr_return_null_for_z_in_abcdef_test(void);
-int	memchr_return_null_for_letter_after_n(void);
-int	memchr_return_first_b_in_abababab(void);
+int	signal_launcher(t_count *final_count);
+int	signal_ok_test(void);
+int	signal_ko_test(void);
+int	signal_segmentation_fault_test(void);
+int	signal_bus_error_test(void);
 
 #endif

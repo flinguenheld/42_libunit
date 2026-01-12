@@ -1,55 +1,104 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
 
-NAME = libft_test
-LIBUNIT_FOLDER = ../framework/
-LIBUNIT_FILE = $(LIBUNIT_FOLDER)libunit.a
-
-SRC = tests/main.c \
-		tests/is_int/00_launcher.c \
-		tests/is_int/01_is_int_basic_int_test.c \
-		tests/is_int/02_is_int_basic_non_int_test.c \
-		tests/is_int/03_is_int_null_test.c \
-		tests/is_int/04_is_int_signs_test.c \
-		tests/is_int/05_is_int_space_test.c \
-		tests/is_int/06_is_int_no_char_test.c \
-		tests/lst_size/00_launcher.c \
-		tests/lst_size/01_lst_size_basic_test.c \
-		tests/lst_size/02_lst_size_large_test.c \
-		tests/lst_size/03_lst_size_null_test.c \
-		tests/atol/00_launcher.c \
-		tests/atol/01_atol_basic_test.c \
-		tests/atol/02_atol_negative_test.c \
-		tests/atol/03_atol_max_test.c \
-		tests/atol/04_atol_min_test.c \
-		tests/atol/05_atol_zero_test.c \
-		tests/memchr/00_launcher.c \
-		tests/memchr/01_memchr_can_find_d_in_abcdef_test.c \
-		tests/memchr/02_memchr_return_null_for_z_in_abcdef_test.c \
-		tests/memchr/03_memchr_return_null_for_letter_after_n.c \
-		tests/memchr/04_memchr_return_first_b_in_abababab.c \
-
-all: $(NAME)
+SRC =  \
+		ft_is/ft_is_integer.c \
+		ft_is/ft_isalnum.c \
+		ft_is/ft_isalpha.c \
+		ft_is/ft_isascii.c \
+		ft_is/ft_isdigit.c \
+		ft_is/ft_isprint.c \
+		ft_is/ft_isspace.c \
+		\
+		ft_list/ft_lst_clear.c \
+		ft_list/ft_lst_contains.c \
+		ft_list/ft_lst_delone.c \
+		ft_list/ft_lst_iter.c \
+		ft_list/ft_lst_last.c \
+		ft_list/ft_lst_map.c \
+		ft_list/ft_lst_new.c \
+		ft_list/ft_lst_pop_back.c \
+		ft_list/ft_lst_pop_front.c \
+		ft_list/ft_lst_push_back.c \
+		ft_list/ft_lst_push_front.c \
+		ft_list/ft_lst_rotate_left.c \
+		ft_list/ft_lst_rotate_right.c \
+		ft_list/ft_lst_size.c \
+		ft_list/ft_lst_swap_content.c \
+		\
+		ft_malloc/ft_calloc.c \
+		\
+		ft_mem/ft_bzero.c \
+		ft_mem/ft_memchr.c \
+		ft_mem/ft_memcmp.c \
+		ft_mem/ft_memcpy.c \
+		ft_mem/ft_memmove.c \
+		ft_mem/ft_memrchr.c \
+		ft_mem/ft_memset.c \
+		ft_mem/ft_swap.c \
+		\
+		ft_printf/ft_printf.c \
+		ft_printf/ft_printf_char.c \
+		ft_printf/ft_printf_flags.c \
+		ft_printf/ft_printf_hexa.c \
+		ft_printf/ft_printf_int.c \
+		ft_printf/ft_printf_number.c \
+		ft_printf/ft_printf_pointer.c \
+		ft_printf/ft_printf_string.c \
+		ft_printf/ft_printf_utils.c \
+		ft_printf/ft_printf_uint.c \
+		\
+		ft_put/ft_putchar_fd.c \
+		ft_put/ft_putendl_fd.c \
+		ft_put/ft_putnbr_fd.c \
+		ft_put/ft_putstr_fd.c \
+		\
+		ft_str/ft_split.c \
+		ft_str/ft_strchr.c \
+		ft_str/ft_strdup.c \
+		ft_str/ft_striter.c \
+		ft_str/ft_striteri.c \
+		ft_str/ft_strjoin.c \
+		ft_str/ft_strlcat.c \
+		ft_str/ft_strlcpy.c \
+		ft_str/ft_strlen.c \
+		ft_str/ft_strmapi.c \
+		ft_str/ft_strncmp.c \
+		ft_str/ft_strnstr.c \
+		ft_str/ft_strrchr.c \
+		ft_str/ft_strtrim.c \
+		ft_str/ft_substr.c \
+		\
+		ft_to/ft_atoi.c \
+		ft_to/ft_atol.c \
+		ft_to/ft_itoa.c \
+		ft_to/ft_itohex.c \
+		ft_to/ft_ltoa.c \
+		ft_to/ft_ltohex.c \
+		ft_to/ft_tolower.c \
+		ft_to/ft_toupper.c \
+		ft_to/ft_u_ul_tobase.c \
+		ft_to/ft_utoa.c \
+		ft_to/ft_utohex.c \
 
 OBJS := $(SRC:%.c=%.o)
 
-$(NAME): libunit $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LIBUNIT_FILE)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 test: all
-	./$(NAME) || true
-
-libunit:
-	@make -C $(LIBUNIT_FOLDER)
+	@make -C tests/
 
 clean:
 	@rm -vf $(OBJS)
-	make -C $(LIBUNIT_FOLDER) clean
 
 fclean: clean
 	@rm -vf $(NAME)
-	make -C $(LIBUNIT_FOLDER) fclean
+	@rm -vf $(TEST)
 
 re: fclean all
 
-.PHONY: all $(NAME) libunit clean fclean re test
+.PHONY: all $(NAME) clean fclean re test

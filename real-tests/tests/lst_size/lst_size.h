@@ -13,8 +13,8 @@
 #ifndef LST_SIZE_H
 # define LST_SIZE_H
 
-# include "../../../framework/libunit.h"
-# include "../../libft/libft.h"
+# include "../framework/libunit.h"
+# include "../../libft.h"
 
 int	lst_size_launcher(t_count *final_count);
 int	lst_size_basic_test(void);
