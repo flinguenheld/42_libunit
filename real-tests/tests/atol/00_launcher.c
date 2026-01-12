@@ -6,13 +6,13 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 01:00:13 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:12:42 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "atol.h"
 
-int	atol_launcher(void)
+int	atol_launcher(t_count *final_count)
 {
 	t_list	*list;
 
@@ -22,5 +22,5 @@ int	atol_launcher(void)
 	load_test(&list, "Test long max", &atol_max_test);
 	load_test(&list, "Test long min", &atol_min_test);
 	load_test(&list, "Test 0", &atol_min_test);
-	return (launch_tests("ATOL", list));
+	return (launch_tests("ATOL", list, final_count));
 }

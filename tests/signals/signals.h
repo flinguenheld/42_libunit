@@ -6,7 +6,7 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:12:40 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../framework/libunit.h"
 
-int	signal_launcher(void);
+int	signal_launcher(t_count *final_count);
 int	signal_ok_test(void);
 int	signal_ko_test(void);
 int	signal_segmentation_fault_test(void);
