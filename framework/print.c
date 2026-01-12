@@ -6,11 +6,12 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/11 18:05:37 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:07:44 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <stdlib.h>
 
 void	style_print(char *title, char *name, char *msg, char *color)
 {
@@ -19,8 +20,10 @@ void	style_print(char *title, char *name, char *msg, char *color)
 
 void	print_checked(int counter, int total)
 {
-	int	red;
-	int	green;
+	int		red;
+	int		green;
+	char	*red_str;
+	char	*green_str;
 
 	green = ((float) counter / (float) total) * 120;
 	red = 255 - green;
@@ -28,6 +31,10 @@ void	print_checked(int counter, int total)
 		green = 255;
 	if (!counter)
 		red = 255;
+	red_str = ft_itoa(red);
+	green_str = ft_itoa(green);
 	ft_printf("\n%s%s;%s%s%i/%i tests checked%s\n",
-		KSTA, ft_itoa(red), ft_itoa(green), KEND, counter, total, KNRM);
+		KSTA, red_str, green_str, KEND, counter, total, KNRM);
+	free(red_str);
+	free(green_str);
 }
