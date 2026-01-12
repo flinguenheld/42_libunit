@@ -5,6 +5,12 @@
 ### Description
 
 This project allows you to easily launch and print [unit tests](https://en.wikipedia.org/wiki/Unit_testing).  
+It requires to write test functions and follow some steps to add them.  
+Once done, a simple make command will, execute all tests in separated forks and print their status which can be:
+- OK
+- KO
+- Segmentation fault
+- Bus error
 
 ### Installation
 
@@ -28,19 +34,22 @@ The purpose is to have this structure:
         |     |        |   00_launcher.c
         |     |        |   01_unit_test.c
         |     |        |   02_unit_test.c
+        |     |        |   ...
         |     |        |   function_to_test_1.h
         |     |        |
         |     |-- function_to_test_2/
         |     |        |   00_launcher.c
         |     |        |   01_unit_test.c
         |     |        |   02_unit_test.c
+        |     |        |   ...
         |     |        |   function_to_test_2.h
+        |     |        |
 ```
 
 #### Steps
 
-1. Up *your* Makefile with a new rule *test*:
-Also update your *clean* & *fclean* rules to propagate them.  
+1. Up **your** Makefile with a new rule *test*  
+(also update your *clean* & *fclean* rules to propagate them)
 
 ``` Makefile
 test: all
@@ -55,16 +64,18 @@ fclean: clean
 .PHONY: all $(NAME) clean fclean re [...] test
 ```
 
-2. Create a folder in *tests* with the name of a function you want to test.
+2. Create folders (*function_to_test_1*, *function_to_test_2*, ...) in the **tests** with the name of a function you want to test.
 
-3. Create files which will contain your test functions and a .h with their prototypes.  
+3. Create files which will contain your test functions and a .h file with their prototypes.  
 here **atol/atol_basic_test.c** for instance.  
 
 ``` C
 #include "atol.h"
 
+// The function has to be with this prototype:
 int	atol_basic_test(void)
 {
+	// And return either 0 for success or -1
 	if (atol("2") == 2)
 		return (0);
 	else
@@ -74,6 +85,7 @@ int	atol_basic_test(void)
 ```
 4. Inside this new folder, create a `00_launcher.c` file.  
 It will be in charge of launching your unit functions.  
+(comment a *load_test* line to disable a test)  
 Here an example:
 
 ``` C
@@ -81,18 +93,23 @@ Here an example:
 
 int	atol_launcher(t_count *final_count)
 {
+	// Create a list which will contain all your tests --
 	t_list	*list;
 
 	list = NULL;
+
+	// Use this function to load a function test with a name --
 	load_test(&list, "Test 2", &atol_basic_test); // Function ptr
 	load_test(&list, "Test -2", &atol_negative_test);
 	load_test(&list, "Test long max", &atol_max_test);
 	...
+	// Then launch them all with a title --
 	return (launch_tests("ATOL", list, final_count));
 }
 
 ```
-5. Then add a *main.c* which will be in charge of your launchers
+5. Then add a *main.c*, its role is to execute your launchers.  
+(comment a launcher to disable a group of tests)  
 
 ``` C
 #include "is_int/is_int.h"
@@ -102,22 +119,27 @@ int	atol_launcher(t_count *final_count)
 
 int	main(void)
 {
+	// Create and init a counter --
 	t_count	s_count;
 
 	s_count = count_init();
+
+	// Add here all your launchers --
 	is_int_launcher(&s_count);
-	lst_size_launcher(&s_count);
+	// lst_size_launcher(&s_count);
 	atol_launcher(&s_count);
 	memchr_launcher(&s_count);
+
+	// Print a summary of successful tests --
 	print_final_counter(&s_count);
 	if (s_count.success != s_count.total)
 		return (-1);
 	return (0);
 }
 ```
-6. Up the *tests Makefile*.  
+6. Update the *tests Makefile*.  
 This file has been pre-filled.
-You have to set the name of the executable and add your new tests files in the *SRC* variable.
+You have to set the name of the executable and add your new tests files in the **SRC** variable.
 
 ``` Makefile
 CC = cc
@@ -156,8 +178,8 @@ re: fclean all
 
 ### Commands
 
-In your root folder, simply run:  
-It will compile your project, compile your tests and the libunit framework and launch them.  
+To compile your project, the libunit framework, your tests and launch them,  
+simply run this command in your root folder:  
 
 ``` bash
 make test

@@ -24,11 +24,11 @@ libft:
 	@make -C $(LIBFT_FOLDER)
 
 clean:
-	@rm -vf $(OBJS)
+	@rm -f $(OBJS)
 	make -C $(LIBFT_FOLDER) clean
 
 fclean: clean
-	@rm -vf $(NAME)
+	@rm -f $(NAME)
 	make -C $(LIBFT_FOLDER) fclean
 
 re: fclean all

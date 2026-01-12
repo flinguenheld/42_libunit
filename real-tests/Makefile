@@ -93,11 +93,11 @@ test: all
 	@make -C tests/
 
 clean:
-	@rm -vf $(OBJS)
+	@rm -f $(OBJS)
 	@make -C tests/ clean
 
 fclean: clean
-	@rm -vf $(NAME)
+	@rm -f $(NAME)
 	@make -C tests/ fclean
 
 re: fclean all

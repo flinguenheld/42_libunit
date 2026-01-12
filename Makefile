@@ -6,7 +6,10 @@ LIBUNIT_FOLDER = framework/
 LIBUNIT_FILE = framework/libunit.a
 
 SRC =	main.c \
-		folder/01_unit_test_you_want.c \
+		your_folder/01_unit_test_you_want.c \
+		your_folder/02_unit_test_you_want.c \
+		another_folder/01_unit_test_you_want.c \
+		...
 
 all: $(NAME)
 
