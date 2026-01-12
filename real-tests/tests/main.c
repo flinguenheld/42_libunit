@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:31:47 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:46:14 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	main(void)
 	atol_launcher(&s_count);
 	memchr_launcher(&s_count);
 	print_final_counter(&s_count);
+	if (s_count.success != s_count.total)
+		return (-1);
 	return (0);
 }

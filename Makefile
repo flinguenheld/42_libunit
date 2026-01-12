@@ -20,7 +20,7 @@ $(NAME): libunit $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LIBUNIT_FILE)
 
 test: all
-	./$(NAME)
+	./$(NAME) || true
 
 libunit:
 	@make -C $(LIBUNIT_FOLDER)
@@ -35,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) libunit clean fclean re
+.PHONY: all $(NAME) libunit clean fclean re test

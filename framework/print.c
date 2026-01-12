@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 03:38:37 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:57:26 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_checked(int counter, int total)
 		red = 255;
 	red_str = ft_itoa(red);
 	green_str = ft_itoa(green);
-	ft_printf("\n%s%s;%s%s%i/%i tests checked%s\n\n",
+	ft_printf("\n%s%s;%s%s%i/%i tests successful%s\n\n",
 		KSTA, red_str, green_str, KEND, counter, total, KNRM);
 	free(red_str);
 	free(green_str);

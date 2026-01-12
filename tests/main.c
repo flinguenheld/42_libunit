@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
+/*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
+/*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:46:06 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	main(void)
 {
-	int	counter;
+	t_count	s_count;
 
-	counter = 0;
-	counter += signal_launcher();
+	s_count = count_init();
+	signal_launcher(&s_count);
+	print_final_counter(&s_count);
+	if (s_count.success != s_count.total)
+		return (-1);
 	return (0);
 }
