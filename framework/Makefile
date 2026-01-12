@@ -4,7 +4,6 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libunit.a
 LIBFT_FOLDER = ./libft/
 LIBFT_FILE = $(LIBFT_FOLDER)libft.a
-TEST = main_test
 
 SRC =	libunit.c \
 		print.c \
@@ -19,11 +18,7 @@ $(NAME): libft $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 test: all
-	$(CC) $(TEST).c $(NAME) -o $(TEST)
-	./$(TEST)
-
-test_no_flag: CFLAGS =
-test_no_flag: test
+	@make -C tests/
 
 libft:
 	@make -C $(LIBFT_FOLDER)
@@ -39,4 +34,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) libft clean fclean re test test_no_flag
+.PHONY: all $(NAME) libft clean fclean re test
