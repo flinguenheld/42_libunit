@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 02:17:30 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 02:45:09 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ void	print_checked(int counter, int total)
 		KSTA, red_str, green_str, KEND, counter, total, KNRM);
 	free(red_str);
 	free(green_str);
+}
+
+void	print_final_counter(&s_count)
+{
+	
 }

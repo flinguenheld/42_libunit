@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 18:06:10 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 02:46:08 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef struct s_unode
 
 /**
  * @brief
+ * Struct used to store result counter
+ */
+typedef struct s_count
+{
+	int		total;
+	int		success;
+}	t_count;
+
+/**
+ * @brief
  * Add a new test in the list.
  */
 void	load_test(t_list **list, char *name, int (*function)(void));
@@ -60,5 +70,7 @@ int		launch_tests(char *title, t_list *list);
 
 void	style_print(char *title, char *name, char *msg, char *color);
 void	print_checked(int counter, int total);
+void	print_final_counter(&s_count);
+t_count	count_init(void);
 
 #endif
