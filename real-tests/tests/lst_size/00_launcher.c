@@ -6,22 +6,19 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 23:51:37 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/11 23:56:54 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "is_int.h"
+#include "lst_size.h"
 
-int	is_int_launcher(void)
+int	lst_size_launcher(void)
 {
 	t_list	*list;
 
 	list = NULL;
-	load_test(&list, "Basic test with int", &is_int_basic_int_test);
-	load_test(&list, "Basic test with non-int", &is_int_basic_non_int_test);
-	load_test(&list, "Null test", &is_int_null_test);
-	load_test(&list, "Sign test", &is_int_signs_test);
-	load_test(&list, "Spaces test", &is_int_space_test);
-	load_test(&list, "No char after spaces/sign test", &is_int_no_char_test);
-	return (launch_tests("IS INT", list));
+	load_test(&list, "Test on 1", &lst_size_basic_test);
+	load_test(&list, "Test on 99998", &lst_size_large_test);
+	load_test(&list, "Null test", &lst_size_null_test);
+	return (launch_tests("LST SIZE", list));
 }

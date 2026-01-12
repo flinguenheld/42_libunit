@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_int.h                                           :+:      :+:    :+:   */
+/*   01_is_int_basic_int_test.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 23:25:06 by tghnassi         ###   ########.fr       */
+/*   Created: 2026/01/11 19:20:47 by tghnassi          #+#    #+#             */
+/*   Updated: 2026/01/11 23:25:39 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_INT_H
-# define IS_INT_H
+#include "is_int.h"
 
-# include "../../../framework/libunit.h"
-# include "../../libft/libft.h"
-
-int	is_int_launcher(void);
-int	is_int_basic_int_test(void);
-int	is_int_basic_non_int_test(void);
-int	is_int_null_test(void);
-int	is_int_signs_test(void);
-int	is_int_space_test(void);
-int	is_int_no_char_test(void);
-
-#endif
+int	is_int_basic_int_test(void)
+{
+	if (ft_is_integer("5") == 1)
+		return (0);
+	else
+		return (-1);
+}

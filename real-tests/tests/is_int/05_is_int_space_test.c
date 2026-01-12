@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   01_is_int.c                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */
+/*   05_is_int_space_test.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
+/*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 22:11:07 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/11 19:20:47 by tghnassi          #+#    #+#             */
+/*   Updated: 2026/01/11 23:25:57 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "is_int.h"
 
-int	is_int_basic_test(void)
+int	is_int_space_test(void)
 {
-	return (0);
+	if (ft_is_integer("   \t \r   2") == 1)
+		return (0);
+	else
+		return (-1);
 }

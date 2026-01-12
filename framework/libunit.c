@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 18:05:10 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:57:53 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static int	print_result(int status, char *title, char *name)
 static int	fork_to_test(char *title, t_unode *test, t_list **list_to_free)
 {
 	pid_t	id_fork;
-	pid_t	id_wait;
 	int		status;
 	int		(*function_to_test)(void);
 
@@ -100,7 +99,7 @@ static int	fork_to_test(char *title, t_unode *test, t_list **list_to_free)
 			exit(EXIT_OK);
 		exit(EXIT_KO);
 	}
-	id_wait = wait(&status);
+	wait(&status);
 	return (print_result(status, title, test->name));
 }
 

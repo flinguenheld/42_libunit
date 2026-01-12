@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_int.h                                           :+:      :+:    :+:   */
+/*   02_lst_size_large_test.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 19:12:56 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 23:25:06 by tghnassi         ###   ########.fr       */
+/*   Created: 2026/01/11 19:20:47 by tghnassi          #+#    #+#             */
+/*   Updated: 2026/01/12 01:27:26 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_INT_H
-# define IS_INT_H
+#include "lst_size.h"
 
-# include "../../../framework/libunit.h"
-# include "../../libft/libft.h"
+int	lst_size_large_test(void)
+{
+	int 	i;
+	t_list	*lst;
 
-int	is_int_launcher(void);
-int	is_int_basic_int_test(void);
-int	is_int_basic_non_int_test(void);
-int	is_int_null_test(void);
-int	is_int_signs_test(void);
-int	is_int_space_test(void);
-int	is_int_no_char_test(void);
-
-#endif
+	i = 9;
+	lst = NULL;
+	while (--i > 0)
+		ft_lst_push_front(&lst, ft_lst_new(NULL));
+	if (ft_lst_size(lst) == 8)
+	{
+		ft_lst_clear_basic(&lst);
+		return (0);
+	}
+	else
+	{
+		ft_lst_clear_basic(&lst);
+		return (-1);
+	}
+}
