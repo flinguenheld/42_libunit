@@ -56,3 +56,4 @@ dkms.conf
 
 signal_test
 libft_test
+libunit_test
