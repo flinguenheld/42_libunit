@@ -18,20 +18,20 @@ $(NAME): libft $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 test: all
-	@make -C tests/
+	@make -C tests/ --no-print-directory
 
 libft:
-	@make -C $(LIBFT_FOLDER)
+	@make -C $(LIBFT_FOLDER) --no-print-directory
 
 clean:
 	@rm -vf $(OBJS)
-	make -C $(LIBFT_FOLDER) clean
-	make -C tests/ clean
+	make -C $(LIBFT_FOLDER) --no-print-directory clean
+	make -C tests/ --no-print-directory clean
 
 fclean: clean
 	@rm -vf $(NAME)
-	make -C $(LIBFT_FOLDER) fclean
-	make -C tests/ fclean
+	make -C $(LIBFT_FOLDER) --no-print-directory fclean
+	make -C tests/ --no-print-directory fclean
 
 re: fclean all
 

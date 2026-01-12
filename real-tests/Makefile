@@ -90,15 +90,15 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 test: all
-	@make -C tests/
+	@make -C tests/ --no-print-directory
 
 clean:
 	@rm -f $(OBJS)
-	@make -C tests/ clean
+	@make -C tests/ clean --no-print-directory
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C tests/ fclean
+	@make -C tests/ fclean --no-print-directory
 
 re: fclean all
 
