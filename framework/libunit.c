@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 22:57:53 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 03:08:25 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,26 @@ static int	fork_to_test(char *title, t_unode *test, t_list **list_to_free)
 	return (print_result(status, title, test->name));
 }
 
-int	launch_tests(char *title, t_list *start_list)
+int	launch_tests(char *title, t_list *start_list, t_count *final_count)
 {
-	int		total;
-	int		counter;
+	t_count	local_count;
 	t_unode	*content;
 	t_list	*current_node;
 
-	total = 0;
-	counter = 0;
+	local_count = count_init();
 	current_node = start_list;
 	while (current_node != NULL)
 	{
 		content = (t_unode *)current_node->content;
-		counter += fork_to_test(title, content, &start_list);
+		local_count.success += fork_to_test(title, content, &start_list);
 		current_node = current_node->next;
-		total++;
+		(local_count.total)++;
 	}
 	ft_lst_clear_basic(&start_list);
-	print_checked(counter, total);
-	if (counter == total)
+	print_checked(local_count.success, local_count.total);
+	final_count->success += local_count.success;
+	final_count->total += local_count.total;
+	if (local_count.success == local_count.total)
 		return (0);
 	return (-1);
 }
