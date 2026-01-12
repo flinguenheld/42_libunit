@@ -6,13 +6,13 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 00:12:43 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 00:15:34 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:50:47 by tghnassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "atol.h"
 
-int	atol_negative_test()
+int	atol_negative_test(void)
 {
 	if (atol("-2") == -2)
 		return (0);
