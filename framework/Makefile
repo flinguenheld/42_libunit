@@ -26,10 +26,12 @@ libft:
 clean:
 	@rm -vf $(OBJS)
 	make -C $(LIBFT_FOLDER) clean
+	make -C tests/ clean
 
 fclean: clean
 	@rm -vf $(NAME)
 	make -C $(LIBFT_FOLDER) fclean
+	make -C tests/ fclean
 
 re: fclean all
 

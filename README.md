@@ -4,46 +4,60 @@
 
 ### Description
 
-This project allows you to easily launch and print unit tests.  
+This project allows you to easily launch and print [unit tests](https://en.wikipedia.org/wiki/Unit_testing).  
 
 ### Installation
 
 Clone this repository in the root of your project and name the folder **tests**.  
-It will have this shape:  
+(You can remove the folder *.git*)  
+``` Bash
+git clone https://github.com/flinguenheld/42_libunit tests
+```
+
+The purpose is to have this structure:  
 
 ```
 - your_project/
-        |-> Makefile
+        |   Makefile
+        |   ...
         |-- tests/
-        |     |-> Makefile
-        |     |-> main.c
+        |     |   Makefile
+        |     |   main.c
         |     |-- framework/
         |     |-- function_to_test_1/
-        |     |        |-> 00_launcher.c
-        |     |        |-> 01_unit_test.c
-        |     |        |-> 02_unit_test.c
-        |     |        |-> function_to_test_1.h
+        |     |        |   00_launcher.c
+        |     |        |   01_unit_test.c
+        |     |        |   02_unit_test.c
+        |     |        |   function_to_test_1.h
+        |     |        |
         |     |-- function_to_test_2/
-        |     |        |-> 00_launcher.c
-        |     |        |-> 01_unit_test.c
-        |     |        |-> 02_unit_test.c
-        |     |        |-> function_to_test_2.h
+        |     |        |   00_launcher.c
+        |     |        |   01_unit_test.c
+        |     |        |   02_unit_test.c
+        |     |        |   function_to_test_2.h
 ```
 
 #### Steps
 
-1. Up *your* Makefile with a new rule:
+1. Up *your* Makefile with a new rule *test*:
+Also update your *clean* & *fclean* rules to propagate them.  
 
 ``` Makefile
 test: all
 	@make -C tests/
+
+clean:
+	make -C tests/ clean
+
+fclean: clean
+	make -C tests/ fclean
 
 .PHONY: all $(NAME) clean fclean re [...] test
 ```
 
 2. Create a folder in *tests* with the name of a function you want to test.
 
-3. Create files which will contains your test functions and a .h with their prototypes.  
+3. Create files which will contain your test functions and a .h with their prototypes.  
 here **atol/atol_basic_test.c** for instance.  
 
 ``` C
@@ -101,6 +115,44 @@ int	main(void)
 	return (0);
 }
 ```
+6. Up the *tests Makefile*.  
+This file has been pre-filled.
+You have to set the name of the executable and add your new tests files in the *SRC* variable.
+
+``` Makefile
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = name_of_your_test_executable
+LIBUNIT_FOLDER = framework/ 
+LIBUNIT_FILE = framework/libunit.a
+
+SRC =	main.c \
+		folder/01_unit_test_you_want.c \
+
+all: $(NAME)
+
+OBJS := $(SRC:%.c=%.o)
+
+$(NAME): libunit $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) $(LIBUNIT_FILE)
+	./$(NAME) || true
+
+libunit:
+	@make -C $(LIBUNIT_FOLDER)
+
+clean:
+	@rm -vf $(OBJS)
+	make -C $(LIBUNIT_FOLDER) clean
+
+fclean: clean
+	@rm -vf $(NAME)
+	make -C $(LIBUNIT_FOLDER) fclean
+
+re: fclean all
+
+.PHONY: all $(NAME) clean fclean re libunit
+```
 
 ### Commands
 
@@ -109,4 +161,10 @@ It will compile your project, compile your tests and the libunit framework and l
 
 ``` bash
 make test
+```
+
+And to clean all subfolders
+``` bash
+make clean
+make fclean
 ```
