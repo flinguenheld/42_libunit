@@ -138,14 +138,15 @@ int	main(void)
 }
 ```
 6. Update the *tests Makefile*.  
-This file has been pre-filled.
-You have to set the name of the executable and add your new tests files in the **SRC** variable.
+This file has been pre-filled.  
+You have to add and add your new tests files in the **SRC** variable.  
+The executable default name is **libunit_tester.exe**.
 
 ``` Makefile
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = name_of_your_test_executable
+NAME = libunit_tester.exe
 LIBUNIT_FOLDER = framework/ 
 LIBUNIT_FILE = framework/libunit.a
 

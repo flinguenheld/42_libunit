@@ -30,8 +30,8 @@ clean:
 
 fclean: clean
 	@rm -vf $(NAME)
-	make -C $(LIBFT_FOLDER) --no-print-directory fclean
-	make -C tests/ --no-print-directory fclean
+	@make -C $(LIBFT_FOLDER) --no-print-directory fclean
+	@make -C tests/ --no-print-directory fclean
 
 re: fclean all
 

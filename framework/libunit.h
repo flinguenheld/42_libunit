@@ -67,9 +67,29 @@ void	load_test(t_list **list, char *name, int (*function)(void));
  * Otherwise 1
  */
 int		launch_tests(char *title, t_list *start_list, t_count *final_count);
-void	style_print(char *title, char *name, char *msg, char *color);
-void	print_checked(int counter, int total);
+
+/**
+ * @brief
+ * Print the given msg with all format options and clear them at the end
+ */
+void	print_with_style(char *title, char *name, char *msg, char *color);
+
+/**
+ * @brief
+ * Print the counter for one launcher with an adapted colour
+ */
+void	print_local_counter(int counter, int total);
+
+/**
+ * @brief
+ * Print the final counter with an adapted colour
+ */
 void	print_final_counter(t_count *s_count);
-t_count	count_init(void);
+
+/**
+ * @brief
+ * Init a new counter with values to 0
+ */
+t_count	counter_init(void);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "libunit.h"
 
-t_count	count_init(void)
+t_count	counter_init(void)
 {
 	return ((t_count){.total = 0, .success = 0});
 }

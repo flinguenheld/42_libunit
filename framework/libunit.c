@@ -52,19 +52,19 @@ static int	print_result(int status, char *title, char *name)
 	{
 		code = WEXITSTATUS(status);
 		if (code == EXIT_OK)
-			return (style_print(title, name, "[OK]", KGRAD0_GRN), 1);
+			return (print_with_style(title, name, "[OK]", KGRAD0_GRN), 1);
 		else if (code == EXIT_KO)
-			return (style_print(title, name, "[KO]", KGRAD9_RED), 0);
+			return (print_with_style(title, name, "[KO]", KGRAD9_RED), 0);
 	}
 	else if (WIFSIGNALED(status))
 	{
 		code = WTERMSIG(status);
 		if (code == SIGSEGV)
-			return (style_print(title, name, "[SIGSEGV]", KGRAD6_RED), 0);
+			return (print_with_style(title, name, "[SIGSEGV]", KGRAD6_RED), 0);
 		else if (code == SIGBUS)
-			return (style_print(title, name, "[SIGBUS]", KGRAD6_RED), 0);
+			return (print_with_style(title, name, "[SIGBUS]", KGRAD6_RED), 0);
 	}
-	return (style_print(title, name, "[unknown error]", KMAG), 0);
+	return (print_with_style(title, name, "[unknown error]", KMAG), 0);
 }
 
 /**
@@ -109,7 +109,7 @@ int	launch_tests(char *title, t_list *start_list, t_count *final_count)
 	t_unode	*content;
 	t_list	*current_node;
 
-	local_count = count_init();
+	local_count = counter_init();
 	current_node = start_list;
 	while (current_node != NULL)
 	{
@@ -119,7 +119,7 @@ int	launch_tests(char *title, t_list *start_list, t_count *final_count)
 		(local_count.total)++;
 	}
 	ft_lst_clear_basic(&start_list);
-	print_checked(local_count.success, local_count.total);
+	print_local_counter(local_count.success, local_count.total);
 	final_count->success += local_count.success;
 	final_count->total += local_count.total;
 	if (local_count.success == local_count.total)

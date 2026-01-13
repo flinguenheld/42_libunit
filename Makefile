@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = name_of_your_test_executable
+NAME = libunit_tester.exe
 LIBUNIT_FOLDER = framework/ 
 LIBUNIT_FILE = framework/libunit.a
 
@@ -20,15 +20,15 @@ $(NAME): libunit $(OBJS)
 	./$(NAME) || true
 
 libunit:
-	@make -C $(LIBUNIT_FOLDER)
+	@make -C $(LIBUNIT_FOLDER) --no-print-directory
 
 clean:
 	@rm -vf $(OBJS)
-	make -C $(LIBUNIT_FOLDER) clean
+	@make -C $(LIBUNIT_FOLDER) --no-print-directory clean
 
 fclean: clean
 	@rm -vf $(NAME)
-	make -C $(LIBUNIT_FOLDER) fclean
+	@make -C $(LIBUNIT_FOLDER) --no-print-directory fclean
 
 re: fclean all
 

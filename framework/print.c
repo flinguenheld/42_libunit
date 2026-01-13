@@ -13,12 +13,12 @@
 #include "libunit.h"
 #include <stdlib.h>
 
-void	style_print(char *title, char *name, char *msg, char *color)
+void	print_with_style(char *title, char *name, char *msg, char *color)
 {
 	ft_printf("%s%s%s:%s:%s%s%s\n", KCYN, title, KNRM, name, color, msg, KNRM);
 }
 
-void	print_checked(int counter, int total)
+void	print_local_counter(int counter, int total)
 {
 	int		red;
 	int		green;
@@ -45,5 +45,5 @@ void	print_final_counter(t_count *s_count)
 		KSTA, KEND, KSTA, KEND, KSTA, KEND);
 	ft_printf("%s100;150%sA%s50;200%sL%s0;255%s:%s",
 		KSTA, KEND, KSTA, KEND, KSTA, KEND, KNRM);
-	print_checked(s_count->success, s_count->total);
+	print_local_counter(s_count->success, s_count->total);
 }
