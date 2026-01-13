@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:27:52 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_unode	*new_content(char *name, int (*function)(void))
  * - 1 if test is OK
  * - 0 for all other cases
  */
-static int	print_result(int status, char *title, char *name)
+static int	print_result(int status, char *name)
 {
 	int	code;
 
@@ -53,19 +53,19 @@ static int	print_result(int status, char *title, char *name)
 	{
 		code = WEXITSTATUS(status);
 		if (code == EXIT_OK)
-			return (print_with_style(title, name, "[OK]", KGRAD0_GRN), 1);
+			return (print_with_style(name, "OK", KGRAD0_GRN), 1);
 		else if (code == EXIT_KO)
-			return (print_with_style(title, name, "[KO]", KGRAD9_RED), 0);
+			return (print_with_style(name, "KO", KGRAD9_RED), 0);
 	}
 	else if (WIFSIGNALED(status))
 	{
 		code = WTERMSIG(status);
 		if (code == SIGSEGV)
-			return (print_with_style(title, name, "[SIGSEGV]", KGRAD6_RED), 0);
+			return (print_with_style(name, "SIGSEGV", KGRAD6_RED), 0);
 		else if (code == SIGBUS)
-			return (print_with_style(title, name, "[SIGBUS]", KGRAD6_RED), 0);
+			return (print_with_style(name, "SIGBUS", KGRAD6_RED), 0);
 	}
-	return (print_with_style(title, name, "[unknown error]", KMAG), 0);
+	return (print_with_style(name, "unknown error", KMAG), 0);
 }
 
 /**
@@ -99,7 +99,7 @@ static int	fork_to_test(char *title, t_unode *test, t_list **list_to_free)
 		exit(function_to_test());
 	}
 	wait(&status);
-	return (print_result(status, title, test->name));
+	return (print_result(status, test->name));
 }
 
 int	launch_tests(char *title, t_list *start_list, t_count *final_count)
@@ -108,8 +108,7 @@ int	launch_tests(char *title, t_list *start_list, t_count *final_count)
 	t_unode	*content;
 	t_list	*current_node;
 
-	ft_printf("\n%s=============================================== %s ====%s\n",
-		KCYN, title, KNRM);
+	print_title(title);
 	local_count = counter_init();
 	current_node = start_list;
 	while (current_node != NULL)

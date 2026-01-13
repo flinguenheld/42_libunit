@@ -6,17 +6,34 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:27:52 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "libunit.h"
 #include <stdlib.h>
 
-void	print_with_style(char *title, char *name, char *msg, char *color)
+void	print_with_style(char *name, char *msg, char *color)
 {
-	ft_printf("%s%s - %s%s%s - %s%s\n", KGRE, title,
-		KNRM, color, name, msg, KNRM);
+	ft_printf("===   %s = [%s%s%s]\n", name, color, msg, KNRM);
+}
+
+void	print_title(char *title)
+{
+	int	length;
+	int	i;
+
+	length = 80;
+	ft_printf("\n");
+	i = length;
+	while (i--)
+		ft_printf("=");
+	ft_printf("\n");
+	i = length - (ft_strlen(title) + 7);
+	while (i--)
+		ft_printf("=");
+	ft_printf(" %s =====\n", title);
 }
 
 void	print_local_counter(int counter, int total)

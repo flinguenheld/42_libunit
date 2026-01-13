@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/13 19:49:39 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 22:30:13 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define KEND  ";0m"
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
-# define KGRE  "\x1B[38;2;110;110;110m"
 # define KGRAD0_GRN  "\x1B[38;2;0;200;0m"
 # define KGRAD6_RED  "\x1B[38;2;200;200;0m"
 # define KGRAD9_RED  "\x1B[38;2;200;0;0m"
@@ -73,7 +72,7 @@ int		launch_tests(char *title, t_list *start_list, t_count *final_count);
  * @brief
  * Print the given msg with all format options and clear them at the end
  */
-void	print_with_style(char *title, char *name, char *msg, char *color);
+void	print_with_style(char *name, char *msg, char *color);
 
 /**
  * @brief
@@ -86,6 +85,12 @@ void	print_local_counter(int counter, int total);
  * Print the final counter with an adapted colour
  */
 void	print_final_counter(t_count *s_count);
+
+/**
+ * @brief
+ * Print a title on the left with a lot of ====
+ */
+void	print_title(char *title);
 
 /**
  * @brief
