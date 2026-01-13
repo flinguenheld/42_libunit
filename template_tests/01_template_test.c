@@ -6,14 +6,14 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/13 18:41:22 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:52:46 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	template_test(void)
 {
 	// OK
-	return (0);
+	return (1);
 	// KO
-	return (-1);
+	return (0);
 }

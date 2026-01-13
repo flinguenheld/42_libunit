@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/12 03:57:26 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void	print_with_style(char *title, char *name, char *msg, char *color)
 {
-	ft_printf("%s%s%s:%s:%s%s%s\n", KCYN, title, KNRM, name, color, msg, KNRM);
+	ft_printf("%s%s%s : %s : %s%s%s\n", KCYN, title,
+		KNRM, name, color, msg, KNRM);
 }
 
 void	print_local_counter(int counter, int total)
@@ -41,6 +42,10 @@ void	print_local_counter(int counter, int total)
 
 void	print_final_counter(t_count *s_count)
 {
+	ft_printf("%s255;0%s=========%s200;50%s=========%s150;100%s=========",
+		KSTA, KEND, KSTA, KEND, KSTA, KEND);
+	ft_printf("%s100;150%s=========%s50;200%s=========%s0;255%s=========\n",
+		KSTA, KEND, KSTA, KEND, KSTA, KEND);
 	ft_printf("%s255;0%sT%s200;50%sO%s150;100%sT",
 		KSTA, KEND, KSTA, KEND, KSTA, KEND);
 	ft_printf("%s100;150%sA%s50;200%sL%s0;255%s:%s",

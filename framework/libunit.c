@@ -6,11 +6,12 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:02:13 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:08:25 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include "libft/libft.h"
 
 /**
  * @brief
@@ -107,6 +108,8 @@ int	launch_tests(char *title, t_list *start_list, t_count *final_count)
 	t_unode	*content;
 	t_list	*current_node;
 
+	ft_printf("\n%s=============================================== %s ====%s\n",
+		KCYN, title, KNRM);
 	local_count = counter_init();
 	current_node = start_list;
 	while (current_node != NULL)

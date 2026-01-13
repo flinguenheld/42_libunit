@@ -6,7 +6,7 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:49:41 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	signal_segmentation_fault_test(void)
 
 	a = NULL;
 	*a = 50;
-	return (-1);
+	return (0);
 }

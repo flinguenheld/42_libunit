@@ -6,7 +6,7 @@
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 16:59:07 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/11 21:32:07 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:49:41 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	signal_ko_test(void)
 
 	a = 100;
 	b = 100;
-	if (a + b == 0)
-		return (0);
+	// Voluntarily fail
+	if (a + b == 1000000)
+		return (1);
 	else
-		return (-1);
+		return (0);
 }

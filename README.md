@@ -15,7 +15,6 @@ Once done, a simple make command will, execute all tests in separated forks and 
 ### Installation
 
 Clone this repository in the root of your project and name the folder **tests**.  
-(You can remove the folder *.git*)  
 ``` Bash
 git clone https://github.com/flinguenheld/42_libunit tests
 ```
@@ -77,11 +76,11 @@ here **atol/atol_basic_test.c** for instance.
 // The function has to have this prototype:
 int	atol_basic_test(void)
 {
-	// And return either 0 for success or -1
+	// And return either 1 for success or 0
 	if (atol("2") == 2)
-		return (0);
+		return (1);
 	else
-		return (-1);
+		return (0);
 }
 
 ```

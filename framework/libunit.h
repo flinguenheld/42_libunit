@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/12 03:34:54 by tghnassi         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:49:39 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
-# define EXIT_OK 0
-# define EXIT_KO -1
+# define EXIT_OK 1
+# define EXIT_KO 0
 
 # define KNRM  "\x1B[0m"
 # define KSTA  "\x1B[38;2;"
