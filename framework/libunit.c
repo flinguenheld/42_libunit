@@ -95,9 +95,7 @@ static int	fork_to_test(char *title, t_unode *test, t_list **list_to_free)
 	{
 		function_to_test = test->function;
 		ft_lst_clear_basic(list_to_free);
-		if (function_to_test() == 0)
-			exit(EXIT_OK);
-		exit(EXIT_KO);
+		exit(function_to_test());
 	}
 	wait(&status);
 	return (print_result(status, title, test->name));

@@ -6,10 +6,8 @@ LIBUNIT_FOLDER = framework/
 LIBUNIT_FILE = framework/libunit.a
 
 SRC =	main.c \
-		your_folder/01_unit_test_you_want.c \
-		your_folder/02_unit_test_you_want.c \
-		another_folder/01_unit_test_you_want.c \
-		...
+		template_tests/00_launcher.c \
+		template_tests/01_template_test.c \
 
 all: $(NAME)
 
@@ -32,4 +30,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re libunit
+.PHONY: all clean fclean re libunit

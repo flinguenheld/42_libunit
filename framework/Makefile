@@ -25,14 +25,14 @@ libft:
 
 clean:
 	@rm -vf $(OBJS)
-	make -C $(LIBFT_FOLDER) --no-print-directory clean
-	make -C tests/ --no-print-directory clean
+	@make -C $(LIBFT_FOLDER) clean
+	@make -C tests/ --no-print-directory clean
 
 fclean: clean
 	@rm -vf $(NAME)
-	@make -C $(LIBFT_FOLDER) --no-print-directory fclean
+	@make -C $(LIBFT_FOLDER) fclean
 	@make -C tests/ --no-print-directory fclean
 
 re: fclean all
 
-.PHONY: all $(NAME) libft clean fclean re test
+.PHONY: all libft clean fclean re test

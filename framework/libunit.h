@@ -20,8 +20,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
-# define EXIT_OK 10
-# define EXIT_KO 20
+# define EXIT_OK 0
+# define EXIT_KO -1
 
 # define KNRM  "\x1B[0m"
 # define KSTA  "\x1B[38;2;"

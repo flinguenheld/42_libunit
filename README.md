@@ -48,18 +48,20 @@ The purpose is to have this structure:
 
 #### Steps
 
+Use the **template test** to create the first test.  
+
 1. Up **your** Makefile with a new rule *test*  
 (also update your *clean* & *fclean* rules to propagate them)
 
 ``` Makefile
 test: all
-	@make -C tests/
+	@make -C tests/ --no-print-directory
 
 clean:
-	make -C tests/ clean
+	@make -C tests/ clean --no-print-directory
 
 fclean: clean
-	make -C tests/ fclean
+	@make -C tests/ fclean --no-print-directory
 
 .PHONY: all $(NAME) clean fclean re [...] test
 ```
@@ -72,7 +74,7 @@ here **atol/atol_basic_test.c** for instance.
 ``` C
 #include "atol.h"
 
-// The function has to be with this prototype:
+// The function has to have this prototype:
 int	atol_basic_test(void)
 {
 	// And return either 0 for success or -1
@@ -108,7 +110,7 @@ int	atol_launcher(t_count *final_count)
 }
 
 ```
-5. Then add a *main.c*, its role is to execute your launchers.  
+5. Modify the *main.c*, its role is to execute your launchers.  
 (comment a launcher to disable a group of tests)  
 
 ``` C
@@ -122,7 +124,7 @@ int	main(void)
 	// Create and init a counter --
 	t_count	s_count;
 
-	s_count = count_init();
+	s_count = counter_init();
 
 	// Add here all your launchers --
 	is_int_launcher(&s_count);
@@ -174,7 +176,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re libunit
+.PHONY: all clean fclean re libunit
 ```
 
 ### Commands
