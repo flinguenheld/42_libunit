@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/13 22:27:52 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 
 void	print_with_style(char *name, char *msg, char *color)
 {
-	ft_printf("===   %s = [%s%s%s]\n", name, color, msg, KNRM);
+	int	length;
+
+	ft_printf("=====   [%s%s%s]  %s", color, msg, KNRM, name);
+	length = 63 - ft_strlen(msg) - ft_strlen(name);
+	while (length--)
+		ft_printf(" ");
+	ft_printf("=====\n", color, msg, KNRM, name);
 }
 
 void	print_title(char *title)
@@ -34,6 +40,7 @@ void	print_title(char *title)
 	while (i--)
 		ft_printf("=");
 	ft_printf(" %s =====\n", title);
+	ft_printf("=====% 70c=====\n", ' ');
 }
 
 void	print_local_counter(int counter, int total)
