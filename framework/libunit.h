@@ -28,9 +28,10 @@
 # define KEND  ";0m"
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
-# define KGRAD0_GRN  "\x1B[38;2;0;255;0m"
-# define KGRAD6_RED  "\x1B[38;2;170;85;0m"
-# define KGRAD9_RED  "\x1B[38;2;255;0;0m"
+# define KGRE  "\x1B[38;2;110;110;110m"
+# define KGRAD0_GRN  "\x1B[38;2;0;200;0m"
+# define KGRAD6_RED  "\x1B[38;2;200;200;0m"
+# define KGRAD9_RED  "\x1B[38;2;200;0;0m"
 
 /**
  * @brief

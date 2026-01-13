@@ -15,8 +15,8 @@
 
 void	print_with_style(char *title, char *name, char *msg, char *color)
 {
-	ft_printf("%s%s%s : %s : %s%s%s\n", KCYN, title,
-		KNRM, name, color, msg, KNRM);
+	ft_printf("%s%s - %s%s%s - %s%s\n", KGRE, title,
+		KNRM, color, name, msg, KNRM);
 }
 
 void	print_local_counter(int counter, int total)
