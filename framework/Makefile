@@ -36,5 +36,4 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: clean fclean
 .PHONY: all libft clean fclean re test

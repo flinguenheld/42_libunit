@@ -21,13 +21,14 @@ libunit:
 	@make -C $(LIBUNIT_FOLDER) --no-print-directory
 
 clean:
-	@rm -vf $(OBJS)
+	@rm -f $(OBJS)
 	@make -C $(LIBUNIT_FOLDER) --no-print-directory clean
 
 fclean: clean
-	@rm -vf $(NAME)
+	@rm -f $(NAME)
 	@make -C $(LIBUNIT_FOLDER) --no-print-directory fclean
 
 re: fclean all
 
+.SILENT: $(OBJS)
 .PHONY: all clean fclean re libunit
