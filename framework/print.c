@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/14 14:42:59 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:25:18 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ void	print_local_counter(int counter, int total)
 	red_str = ft_itoa(red);
 	green_str = ft_itoa(green);
 	print_frame_line(1);
-	ft_printf("=====   %s%s;%s%s% 2i /% 2i tests successful%s",
-		KSTA, red_str, green_str, KEND, counter, total, KNRM);
-	print_close_frame_right(8 + 19);
+	ft_printf("=====           ");
+	ft_printf("%s%s;%s%s% 4i success      % 4i fails      % 4i total%s",
+		KSTA, red_str, green_str, KEND, counter, total - counter, total, KNRM);
+	print_close_frame_right(8 + 48);
 	print_frame_line(0);
 	free(red_str);
 	free(green_str);
