@@ -30,5 +30,5 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: $(OBJS)
+.SILENT: $(OBJS) $(NAME)
 .PHONY: all clean fclean re libunit

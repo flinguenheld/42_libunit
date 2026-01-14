@@ -17,7 +17,7 @@ Once done, a simple make command will, execute all tests in separated forks and 
 Clone this repository in the root of your project and name the folder **tests**.  
 You can remove the **tests/.git** folder  
 ``` Bash
-git clone --recursive https://github.com/flinguenheld/42_libunit tests
+git clone https://github.com/flinguenheld/42_libunit tests
 ```
 
 The purpose is to have this structure:  
@@ -176,7 +176,7 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: $(OBJS)
+.SILENT: $(OBJS) $(NAME)
 .PHONY: all clean fclean re libunit
 ```
 
