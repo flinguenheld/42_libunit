@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/08 16:33:26 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/13 23:50:48 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+int	ft_atoi(const char *str)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	return ((int)ft_atol(str));
 }

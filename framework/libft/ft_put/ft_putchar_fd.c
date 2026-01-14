@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/11 20:02:50 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:55 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	write(fd, &c, 1);
 }

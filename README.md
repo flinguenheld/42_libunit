@@ -15,8 +15,9 @@ Once done, a simple make command will, execute all tests in separated forks and 
 ### Installation
 
 Clone this repository in the root of your project and name the folder **tests**.  
+You can remove the **tests/.git** folder  
 ``` Bash
-git clone https://github.com/flinguenheld/42_libunit tests
+git clone --recursive https://github.com/flinguenheld/42_libunit tests
 ```
 
 The purpose is to have this structure:  

@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_lst_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/14 21:26:48 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:55 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+int	ft_lst_size(t_list *lst)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	if (lst == NULL)
+		return (0);
+	if (lst->next == NULL)
+		return (1);
+	return (ft_lst_size(lst->next) + 1);
 }

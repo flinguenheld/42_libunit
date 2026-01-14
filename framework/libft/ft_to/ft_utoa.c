@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/10 20:01:36 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:56 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+char	*ft_utoa(unsigned int value)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	return (ft_ltobase((long)value, "0123456789"));
 }

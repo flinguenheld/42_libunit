@@ -1,3 +1,0 @@
-[submodule "framework/libft"]
-	path = framework/libft
-	url = https://github.com/flinguenheld/42_libft

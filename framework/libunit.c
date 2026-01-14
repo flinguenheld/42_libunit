@@ -53,19 +53,19 @@ static int	print_result(int status, char *name)
 	{
 		code = WEXITSTATUS(status);
 		if (code == EXIT_OK)
-			return (print_with_style(name, "OK", KGRAD0_GRN), 1);
+			return (print_test_line(name, "OK", KGRAD0_GRN), 1);
 		else if (code == EXIT_KO)
-			return (print_with_style(name, "KO", KGRAD9_RED), 0);
+			return (print_test_line(name, "KO", KGRAD9_RED), 0);
 	}
 	else if (WIFSIGNALED(status))
 	{
 		code = WTERMSIG(status);
 		if (code == SIGSEGV)
-			return (print_with_style(name, "SIGSEGV", KGRAD6_RED), 0);
+			return (print_test_line(name, "SIGSEGV", KGRAD6_RED), 0);
 		else if (code == SIGBUS)
-			return (print_with_style(name, "SIGBUS", KGRAD6_RED), 0);
+			return (print_test_line(name, "SIGBUS", KGRAD6_RED), 0);
 	}
-	return (print_with_style(name, "unknown error", KMAG), 0);
+	return (print_test_line(name, "unknown error", KMAG), 0);
 }
 
 /**

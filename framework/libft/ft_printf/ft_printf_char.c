@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/12/15 22:27:30 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/13 23:50:47 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "ft_printf.h"
+
+int	print_char(char value, t_flags flags)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	int		total;
+
+	total = 0;
+	flags.width.val--;
+	while (!flags.width.after && flags.width.val-- > 0)
+		total += putchar_count(' ', flags);
+	total += putchar_count(value, flags);
+	while (flags.width.after && flags.width.val-- > 0)
+		total += putchar_count(' ', flags);
+	return (total);
 }

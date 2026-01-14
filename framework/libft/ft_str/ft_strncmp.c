@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/08 11:03:51 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:56 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	if (n <= 0)
+		return (0);
+	while (n > 1 && *s1 == *s2 && *s1 && *s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return ((unsigned char)(*s1) - (unsigned char)(*s2));
 }

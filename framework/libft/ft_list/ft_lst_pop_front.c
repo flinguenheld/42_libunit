@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_lst_pop_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2026/01/04 11:25:04 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/04 12:20:48 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+t_list	*ft_lst_pop_front(t_list **lst)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	t_list	*first;
+
+	if (*lst == NULL)
+		return (NULL);
+	first = *lst;
+	*lst = first->next;
+	first->next = NULL;
+	return (first);
 }

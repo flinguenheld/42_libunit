@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/07 21:20:48 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:56 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	char	*found;
+
+	found = NULL;
+	while (1)
+	{
+		if (*s == (unsigned char)c)
+			found = (char *)s;
+		if (*s == '\0')
+			return (found);
+		s++;
+	}
 }

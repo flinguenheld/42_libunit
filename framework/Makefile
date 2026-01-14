@@ -7,6 +7,7 @@ LIBFT_FILE = $(LIBFT_FOLDER)libft.a
 
 SRC =	libunit.c \
 		print.c \
+		print_utils.c \
 		counter.c \
 
 all: $(NAME)
@@ -24,15 +25,16 @@ libft:
 	@make -C $(LIBFT_FOLDER) --no-print-directory
 
 clean:
-	@rm -vf $(OBJS)
-	@make -C $(LIBFT_FOLDER) clean
+	@rm -f $(OBJS)
+	@make -C $(LIBFT_FOLDER) --no-print-directory clean
 	@make -C tests/ --no-print-directory clean
 
 fclean: clean
-	@rm -vf $(NAME)
-	@make -C $(LIBFT_FOLDER) fclean
+	@rm -f $(NAME)
+	@make -C $(LIBFT_FOLDER) --no-print-directory fclean
 	@make -C tests/ --no-print-directory fclean
 
 re: fclean all
 
+.SILENT: clean fclean
 .PHONY: all libft clean fclean re test

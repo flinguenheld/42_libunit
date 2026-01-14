@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*   01_template_test.c                                 :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flinguen <florent@linguenheld.net>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 18:39:23 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:27 by flinguen         ###   ########.fr       */
+/*   Created: 2025/11/11 16:03:44 by flinguen          #+#    #+#             */
+/*   Updated: 2026/01/03 17:16:56 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	template_test(void)
+#include "../libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	// OK
-	return (1);
-	// KO
-	return (0);
+	char	*duplicated;
+	size_t	index;
+
+	if (s == NULL)
+		return (NULL);
+	duplicated = ft_strdup(s);
+	if (duplicated != NULL)
+	{
+		index = 0;
+		while (duplicated[index])
+		{
+			duplicated[index] = f(index, duplicated[index]);
+			index++;
+		}
+	}
+	return (duplicated);
 }

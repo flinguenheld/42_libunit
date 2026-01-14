@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 14:47:58 by tghnassi          #+#    #+#             */
-/*   Updated: 2026/01/13 19:52:44 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:42:59 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,23 @@
 #include "libunit.h"
 #include <stdlib.h>
 
-void	print_with_style(char *name, char *msg, char *color)
+void	print_test_line(char *name, char *msg, char *color)
 {
-	int	length;
-
 	ft_printf("=====   [%s%s%s]  %s", color, msg, KNRM, name);
-	length = 63 - ft_strlen(msg) - ft_strlen(name);
-	while (length--)
-		ft_printf(" ");
-	ft_printf("=====\n", color, msg, KNRM, name);
+	print_close_frame_right(8 + ft_strlen(msg) + ft_strlen(name));
 }
 
 void	print_title(char *title)
 {
-	int	length;
 	int	i;
 
-	length = 80;
 	ft_printf("\n");
-	i = length;
+	print_frame_line(0);
+	i = 80 - (ft_strlen(title) + 10);
 	while (i--)
 		ft_printf("=");
-	ft_printf("\n");
-	i = length - (ft_strlen(title) + 7);
-	while (i--)
-		ft_printf("=");
-	ft_printf(" %s =====\n", title);
-	ft_printf("=====% 70c=====\n", ' ');
+	ft_printf(" %s ========\n", title);
+	print_frame_line(1);
 }
 
 void	print_local_counter(int counter, int total)
@@ -58,21 +48,23 @@ void	print_local_counter(int counter, int total)
 		red = 255;
 	red_str = ft_itoa(red);
 	green_str = ft_itoa(green);
-	ft_printf("\n%s%s;%s%s%i/%i tests successful%s\n\n",
+	print_frame_line(1);
+	ft_printf("=====   %s%s;%s%s% 2i /% 2i tests successful%s",
 		KSTA, red_str, green_str, KEND, counter, total, KNRM);
+	print_close_frame_right(8 + 19);
+	print_frame_line(0);
 	free(red_str);
 	free(green_str);
 }
 
 void	print_final_counter(t_count *s_count)
 {
-	ft_printf("%s255;0%s=========%s200;50%s=========%s150;100%s=========",
-		KSTA, KEND, KSTA, KEND, KSTA, KEND);
-	ft_printf("%s100;150%s=========%s50;200%s=========%s0;255%s=========\n",
-		KSTA, KEND, KSTA, KEND, KSTA, KEND);
+	ft_printf("=========================================");
+	ft_printf("======================== ");
 	ft_printf("%s255;0%sT%s200;50%sO%s150;100%sT",
 		KSTA, KEND, KSTA, KEND, KSTA, KEND);
-	ft_printf("%s100;150%sA%s50;200%sL%s0;255%s:%s",
+	ft_printf("%s100;150%sA%s50;200%sL%s0;255%s%s",
 		KSTA, KEND, KSTA, KEND, KSTA, KEND, KNRM);
+	ft_printf(" ========\n");
 	print_local_counter(s_count->success, s_count->total);
 }

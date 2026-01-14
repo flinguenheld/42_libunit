@@ -6,7 +6,7 @@
 /*   By: tghnassi <tghnassi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 21:07:14 by flinguen          #+#    #+#             */
-/*   Updated: 2026/01/13 22:30:13 by flinguen         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:53:24 by flinguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ void	load_test(t_list **list, char *name, int (*function)(void));
  */
 int		launch_tests(char *title, t_list *start_list, t_count *final_count);
 
+// ---------------------------------------------------------------- Print -----
 /**
  * @brief
  * Print the given msg with all format options and clear them at the end
  */
-void	print_with_style(char *name, char *msg, char *color);
+void	print_test_line(char *name, char *msg, char *color);
 
 /**
  * @brief
@@ -92,6 +93,23 @@ void	print_final_counter(t_count *s_count);
  */
 void	print_title(char *title);
 
+/**
+ * @brief
+ * Print spaces then equal sings to set the right part of the frame
+ *   txt              =====
+ *   txt              =====
+ */
+void	print_close_frame_right(int already_printed);
+
+/**
+ * @brief
+ * Print a full line of equal signs or just equal signs on left & right
+ * ========================================================================
+ * =====                                                              =====
+ */
+void	print_frame_line(int empty);
+
+// -------------------------------------------------------------- Counter -----
 /**
  * @brief
  * Init a new counter with values to 0
